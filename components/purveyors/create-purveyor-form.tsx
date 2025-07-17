@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
@@ -28,13 +30,13 @@ export function CreatePurveyorForm({
       const { error } = await supabase
         .from('purveyors')
         .insert({
-          purveyorName,
-          purveyorLink
+          purveyorname: purveyorName,
+          purveyorlink: purveyorLink
         })
         .select();
       if (error) throw error;
       // Update this route to redirect to an authenticated route. The user already has an active session.
-      router.push("/protected");
+      router.push("/purveyors");
     } catch (error: unknown) {
       setError(error instanceof Error ? error.message : "An error occurred");
     } finally {
