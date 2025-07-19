@@ -2,6 +2,7 @@ import { createClient } from "@/lib/supabase/server";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { Table } from "@radix-ui/themes/components/index";
+import PurveyorListItem from "./purveyor-list-item";
 
 export default async function PurveyorsList() {
   const supabase = await createClient();
@@ -32,11 +33,11 @@ export default async function PurveyorsList() {
 
       <Table.Body>
         {purveyors.map((purveyor) => (
-          <Table.Row key={purveyor.id}>
-            <Table.RowHeaderCell>{purveyor.purveyorname}</Table.RowHeaderCell>
-            <Table.Cell>{purveyor.purveyorlink}</Table.Cell>
-            {/* <Table.Cell>Developer</Table.Cell> */}
-          </Table.Row>
+          // <Table.Row key={purveyor.id}>
+          //   <Table.RowHeaderCell onClick={() => window.location.href = `/purveyors/${purveyor.id}`}>{purveyor.purveyorname}</Table.RowHeaderCell>
+          //   <Table.Cell>{purveyor.purveyorlink}</Table.Cell>
+          // </Table.Row>
+          <PurveyorListItem key={purveyor.id} purveyor={purveyor} />
         ))}
       </Table.Body>
     </Table.Root>
