@@ -16,7 +16,7 @@ export default async function PurveyorPage({
   return (
     <div>
       <h1>{purveyor.purveyorname}</h1>
-      <p>{purveyor.description}</p>
+      <p>{purveyor.purveyorlink}</p>
     </div>
   )
 }

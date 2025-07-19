@@ -27,16 +27,11 @@ export default async function PurveyorsList() {
         <Table.Row>
           <Table.ColumnHeaderCell>Name</Table.ColumnHeaderCell>
           <Table.ColumnHeaderCell>Link</Table.ColumnHeaderCell>
-          {/* <Table.ColumnHeaderCell># Products</Table.ColumnHeaderCell> */}
         </Table.Row>
       </Table.Header>
 
       <Table.Body>
         {purveyors.map((purveyor) => (
-          // <Table.Row key={purveyor.id}>
-          //   <Table.RowHeaderCell onClick={() => window.location.href = `/purveyors/${purveyor.id}`}>{purveyor.purveyorname}</Table.RowHeaderCell>
-          //   <Table.Cell>{purveyor.purveyorlink}</Table.Cell>
-          // </Table.Row>
           <PurveyorListItem key={purveyor.id} purveyor={purveyor} />
         ))}
       </Table.Body>
