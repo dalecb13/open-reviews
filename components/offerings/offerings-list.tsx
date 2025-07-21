@@ -15,7 +15,7 @@ export default async function OfferingsList() {
     return <div>
       <p>No offerings found.</p>
       <Button asChild size="sm" variant={"default"}>
-        <Link href="/offering/create">Create an offering</Link>
+        <Link href="/offerings/create">Create an offering</Link>
       </Button>
     </div>
   }
