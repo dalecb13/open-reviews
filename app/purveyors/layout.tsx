@@ -4,6 +4,7 @@ import { AuthButton } from "@/components/auth-button";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import { hasEnvVars } from "@/lib/utils";
 import Link from "next/link";
+import NavigationBar from "@/components/navigation-bar";
 
 export default function PurveyorsLayout({
   children,
@@ -19,6 +20,7 @@ export default function PurveyorsLayout({
               <Link href={"/"}>Open Reviews</Link>
               <div className="flex items-center gap-2">
                 <DeployButton />
+                <NavigationBar />
               </div>
             </div>
             {!hasEnvVars ? <EnvVarWarning /> : <AuthButton />}
