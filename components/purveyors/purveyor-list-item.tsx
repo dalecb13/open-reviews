@@ -13,7 +13,7 @@ const PurveyorListItem: React.FC<{ purveyor: Purveyor }> = ({ purveyor }) => {
   return (
     <Table.Row key={purveyor.id}>
       <Table.RowHeaderCell
-        className="cursor-pointer"
+        className="cursor-pointer hover:underline"
         onClick={() => window.location.href = `/purveyors/${purveyor.id}`}
       >
         {purveyor.purveyorname}

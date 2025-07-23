@@ -2,6 +2,7 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import { Table } from "@radix-ui/themes/components/index";
 import { getOfferingList } from "@/dal/offering";
+import OfferingListItem from "./offering-list-item";
 
 export default async function OfferingsList() {
   const offerings = await getOfferingList();
@@ -27,11 +28,15 @@ export default async function OfferingsList() {
 
       <Table.Body>
         {offerings.map((offering) => (
-          <Table.Row key={offering.id}>
-            <Table.Cell>{offering.offeringName}</Table.Cell>
-            <Table.Cell>{offering.purveyorName}</Table.Cell>
-            <Table.Cell>{offering.offeringDescription}</Table.Cell>
-          </Table.Row>
+          <OfferingListItem
+            key={offering.id}
+            offering={offering}
+          />
+          // <Table.Row key={offering.id}>
+          //   <Table.Cell onClick={() => redirect(`/offerings/${offering.id}`)}>{offering.offeringName}</Table.Cell>
+          //   <Table.Cell onClick={() => redirect(`/purveyors/${offering.purveyorId}`)}>{offering.purveyorName}</Table.Cell>
+          //   <Table.Cell>{offering.offeringDescription}</Table.Cell>
+          // </Table.Row>
         ))}
       </Table.Body>
     </Table.Root>
