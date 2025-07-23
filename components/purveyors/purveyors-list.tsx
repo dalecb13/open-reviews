@@ -10,8 +10,6 @@ export default async function PurveyorsList() {
     .from('purveyors')
     .select();
 
-  console.log(purveyors);
-
   if (!purveyors || purveyors.length === 0) {
     return <div>
       <p>No purveyors found.</p>
