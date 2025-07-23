@@ -55,3 +55,47 @@ export async function getOfferingList() {
 
   return mappedOfferings as OfferingListItem[];
 }
+
+type OfferingDetails = {
+  id: string;
+  offeringName: string;
+  offeringDescription: string;
+  purveyorName: string;
+  purveyorId: string;
+}
+
+export async function getOfferingById(id: string) {
+  const supabase = await createClient();
+  const { data: offering, error } = await supabase
+    .from('offerings')
+    .select(`
+      id,
+      offeringname,
+      offeringdescription,
+      purveyors(id, purveyorname)
+    `)
+    .eq('id', id)
+    .single();
+
+  if (error) {
+    console.warn(error);
+    throw error;
+  }
+
+  if (!offering) {
+    console.warn(error);
+    return null;
+  }
+
+  const purveyor = offering.purveyors as unknown as Purveyor;
+
+  const mappedOffering = {
+    id: offering.id,
+    offeringName: offering.offeringname,
+    offeringDescription: offering.offeringdescription,
+    purveyorName: purveyor.purveyorname,
+    purveyorId: purveyor.id
+  }
+
+  return mappedOffering as OfferingDetails;
+}
