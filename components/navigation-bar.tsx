@@ -27,6 +27,15 @@ export default function NavigationBar () {
       >
         <Link href="/offerings">Offerings</Link>
       </NavigationMenu.Link>
+      <NavigationMenu.Link
+        asChild
+        active={pathname.startsWith("/reviews")}
+        className={`NavigationMenuLink hover:text-blue-500
+          ${pathname.startsWith("/reviews") ? "underline-offset-1" : ""}
+        `}
+      >
+        <Link href="/reviews">Reviews</Link>
+      </NavigationMenu.Link>
     </NavigationMenu.Root>
   );
 }
